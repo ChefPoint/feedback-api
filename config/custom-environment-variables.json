@@ -1,0 +1,12 @@
+{
+  "database": {
+    "connection-string": "database_connectionString"
+  },
+  "auth": {
+    "jwt-private-key": "auth_jwtPrivateKey"
+  },
+  "storage": {
+    "key": "storage_key",
+    "secret": "storage_secret"
+  }
+}

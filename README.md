@@ -1,1 +1,3 @@
-# feedback-api
+# orpheu-api
+
+Orpheu.org backend

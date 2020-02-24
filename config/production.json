@@ -1,0 +1,28 @@
+{
+  "title": "BOCA Feedback API",
+  "connection": {
+    "port": 3500,
+    "allow-cross-domain": true
+  },
+  "database": {
+    "connection-string": "env-var"
+  },
+  "auth": {
+    "require-auth": false,
+    "require-admin": false,
+    "jwt-private-key": "env-var"
+  },
+  "storage": {
+    "enabled": false,
+    "endpoint": "fra1.digitaloceanspaces.com",
+    "key": "env-var",
+    "secret": "env-var",
+    "bucket": "boca-feedback",
+    "content-folder": "content"
+  },
+  "communication": {
+    "parse-request-query-if-GET": true,
+    "parse-request-body-if-multipart": true,
+    "key-to-parse": "content"
+  }
+}

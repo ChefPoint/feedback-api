@@ -1,0 +1,49 @@
+{
+  "name": "chefpoint-feedback-api",
+  "version": "1.0.0",
+  "description": "CHEF POINT Feedback backend, built on Node.js, Express and MongoDB",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest --watch-all --verbose",
+    "start": "node index.js"
+  },
+  "engines": {
+    "node": "10.15.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joao-vasconcelos/orpheu-api.git"
+  },
+  "author": "João de Vasconcelos",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/joao-vasconcelos/orpheu-api/issues"
+  },
+  "homepage": "https://github.com/joao-vasconcelos/orpheu-api#readme",
+  "dependencies": {
+    "aws-sdk": "^2.624.0",
+    "bcrypt": "^4.0.0",
+    "compression": "^1.7.4",
+    "config": "^3.2.6",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "express-async-errors": "^3.1.1",
+    "express-fileupload": "^1.1.6",
+    "helmet": "^3.21.2",
+    "joi": "^14.3.1",
+    "joi-objectid": "^3.0.1",
+    "jsonwebtoken": "^8.5.1",
+    "lodash": "^4.17.15",
+    "moment": "^2.24.0",
+    "moment-range": "^4.0.2",
+    "mongoose": "^5.9.2",
+    "multer": "^1.4.2",
+    "multer-s3": "^2.9.0",
+    "nodemon": "^2.0.2",
+    "npm": "^6.13.7",
+    "winston": "^3.2.1"
+  },
+  "devDependencies": {
+    "jest": "^25.1.0"
+  }
+}
