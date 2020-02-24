@@ -4,10 +4,10 @@
 /* API ROUTES */
 /* * */
 
-const POSF_router = require("../routes/POSF");
+const terminal_router = require("../routes/terminal");
 const error = require("../middleware/error");
 
 module.exports = function(app) {
-  app.use("/POSF", POSF_router);
+  app.use("/terminal", terminal_router);
   app.use(error);
 };

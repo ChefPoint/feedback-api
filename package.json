@@ -1,7 +1,7 @@
 {
   "name": "chefpoint-feedback-api",
   "version": "1.0.0",
-  "description": "CHEF POINT Feedback backend, built on Node.js, Express and MongoDB",
+  "description": "CHEF POINT Feedback, built on Node.js, Express and MongoDB",
   "main": "index.js",
   "scripts": {
     "test": "jest --watch-all --verbose",
