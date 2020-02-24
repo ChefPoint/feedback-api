@@ -4,9 +4,5 @@
   },
   "auth": {
     "jwt-private-key": "auth_jwtPrivateKey"
-  },
-  "storage": {
-    "key": "storage_key",
-    "secret": "storage_secret"
   }
 }
