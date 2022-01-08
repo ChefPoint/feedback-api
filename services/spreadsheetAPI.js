@@ -8,8 +8,8 @@ const config = require('config');
 const { GoogleSpreadsheet } = require('google-spreadsheet');
 
 const connectToDocument = async () => {
-  console.log('Waiting...');
-  await new Promise((resolve) => setTimeout(resolve, 1000));
+  console.log('Waiting for Google Sheets...');
+  await new Promise((resolve) => setTimeout(resolve, config.get('google-spreadsheets.safety-delay')));
   // -------------------
   // return;
   // Retrieve the Document ID from settings
