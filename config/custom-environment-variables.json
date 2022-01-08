@@ -1,8 +1,6 @@
 {
-  "database": {
-    "connection-string": "database_connectionString"
-  },
-  "auth": {
-    "jwt-private-key": "auth_jwtPrivateKey"
+  "google-spreadsheets": {
+    "google-service-account-email": "google_service_account_email",
+    "google-service-account-private-key": "google_service_account_private_key"
   }
 }

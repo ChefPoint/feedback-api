@@ -1,15 +1,12 @@
 {
-  "title": "BOCA Feedback API",
+  "title": "CHEF POINT Feedback API",
   "connection": {
     "port": 3500,
     "allow-cross-domain": true
   },
-  "database": {
-    "connection-string": "env-var"
-  },
-  "communication": {
-    "parse-request-query-if-GET": true,
-    "parse-request-body-if-multipart": true,
-    "key-to-parse": "content"
+  "google-spreadsheets": {
+    "document-id": "12tBf4l4Kt-m5upPsA4k4EHLi9yudIWh4nA_KuVxvJT0",
+    "google-service-account-email": "envar",
+    "google-service-account-private-key": "envar"
   }
 }
