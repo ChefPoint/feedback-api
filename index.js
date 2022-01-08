@@ -1,3 +1,5 @@
+'use_strict';
+
 /* * */
 /* IMPORTS */
 const winston = require('winston');

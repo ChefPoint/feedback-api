@@ -1,10 +1,11 @@
+'use_strict';
+
 /* * */
 /* IMPORTS */
 const router = require('express').Router();
 const { validate } = require('../models/POSFeedback');
 const spreadsheetAPI = require('../services/spreadsheetAPI');
 const moment = require('moment');
-const config = require('config');
 
 /* * */
 /* * */
@@ -26,9 +27,6 @@ router.post('/', async (req, res) => {
   /* Validation */
   // Validate the request
   // Continue if no errors are found
-
-  console.log(req.body);
-
   const { error } = validate(req.body);
   if (error) return res.status(400).send(error.details[0].message);
 
@@ -81,11 +79,6 @@ router.put('/', async (req, res) => {
       row.save();
     }
   }
-
-  // consolg.log(rows);
-
-  // Try saving to the database
-  // const item = await POSFeedback.findByIdAndUpdate(req.params.id /* Which item to update */, req.body /* What is to change */, { new: true } /* Respond with the updated document */);
 
   res.send(req.body);
 });
