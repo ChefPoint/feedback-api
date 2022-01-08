@@ -1,3 +1,3 @@
-# orpheu-api
+# CHEF POINT Feedback API
 
-Orpheu.org backend
+Microservice to publish Feedback answers to a Google Sheets spreadsheet.
