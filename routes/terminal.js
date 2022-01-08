@@ -64,16 +64,5 @@ router.put('/:id', async (req, res) => {
 });
 
 /* * */
-/* * */
-/* * * * * */
-/* GET method for [/api/books/:id] */
-/* Responds with a specific item from the database */
-router.get('/:id', async (req, res) => {
-  const item = await POSFeedback.findById(req.params.id);
-  if (item) res.send(item);
-  else res.status(404).send('No POSFeedback with the given ID was found.');
-});
-
-/* * */
 /* Export router for [/POSF/] */
 module.exports = router;
