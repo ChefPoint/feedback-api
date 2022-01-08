@@ -8,7 +8,6 @@ const app = express();
 require('./startup/logging')();
 require('./startup/communication')(app);
 require('./startup/routes')(app);
-require('./startup/validation')();
 require('./startup/production')(app);
 
 const port = process.env.PORT || config.get('connection.port') || 3000;
