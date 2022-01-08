@@ -26,11 +26,11 @@ router.post('/', async (req, res) => {
   /* Validation */
   // Validate the request
   // Continue if no errors are found
+
+  console.log(req.body);
+
   const { error } = validate(req.body);
   if (error) return res.status(400).send(error.details[0].message);
-
-  // Retrieve the Document ID from settings
-  const documentID = config.get('google-spreadsheets.document-id');
 
   // Instantiate a new model of Feedback
   let feedback = {
@@ -52,7 +52,7 @@ router.post('/', async (req, res) => {
   };
 
   // Save feedback to GSheets
-  await spreadsheetAPI.addNewRow(documentID, feedback.session, feedback);
+  await spreadsheetAPI.addNewRow(feedback.session, feedback);
 
   // Send the created feedback back to the client
   res.send(feedback);
@@ -64,14 +64,24 @@ router.post('/', async (req, res) => {
 /* PUT method for [/POSF/:id] */
 /* Updates an existing item in the database. */
 /* Responds with the updated item */
-router.put('/:id', async (req, res) => {
+router.put('/', async (req, res) => {
   // Validate the request
   const { error } = validate(req.body);
   if (error) return res.status(400).send(error.details[0].message);
 
-  const rows = await spreadsheetAPI.getRows();
+  const rows = await spreadsheetAPI.getRows(req.body.session);
 
-  consolg.log(rows);
+  for (const row of rows) {
+    if (row.id == req.body.id) {
+      row.secondQuestionTitle = req.body.secondQuestionTitle;
+      row.secondQuestionAnswerIcon = req.body.secondQuestionAnswer.icon;
+      row.secondQuestionAnswerLabel = req.body.secondQuestionAnswer.label;
+      row.secondQuestionAnswerValue = req.body.secondQuestionAnswer.value;
+      row.save();
+    }
+  }
+
+  // consolg.log(rows);
 
   // Try saving to the database
   // const item = await POSFeedback.findByIdAndUpdate(req.params.id /* Which item to update */, req.body /* What is to change */, { new: true } /* Respond with the updated document */);

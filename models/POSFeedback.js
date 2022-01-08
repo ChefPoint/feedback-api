@@ -90,6 +90,8 @@ const Joi = require('joi');
 /* Schema for Joi ["POSFeedback"] Object validation */
 /* This Schema must match MongoDB */
 const validation_schema = Joi.object({
+  // POSFeedback ID
+  id: Joi.string().label('Feedback ID'),
   // Location where POSFeedback is being collected
   session: Joi.string().max(30).required().label('Feedback Collection Session'),
 
@@ -97,21 +99,19 @@ const validation_schema = Joi.object({
   location: Joi.string().max(30).required().label('Location'),
 
   // First Question
-  firstQuestionTitle: Joi.string().max(30).required().label('First Question Title'),
+  firstQuestionTitle: Joi.string().max(30).label('First Question Title'),
   firstQuestionAnswer: Joi.object({
-    icon: Joi.string().max(50).required().label('First Question Answer - Icon'),
-    label: Joi.string().max(50).required().label('First Question Answer - Label'),
-    value: Joi.number().min(1).max(15).required().label('First Question Answer - Value'),
-  })
-    .required()
-    .label('First Question Answer'),
+    icon: Joi.string().max(50).allow('').label('First Question Answer - Icon'),
+    label: Joi.string().max(50).allow('').label('First Question Answer - Label'),
+    value: Joi.any().required().label('First Question Answer - Value'),
+  }).label('First Question Answer'),
 
   // Second Question
   secondQuestionTitle: Joi.string().max(30).label('Second Question Title'),
   secondQuestionAnswer: Joi.object({
     icon: Joi.string().max(50).allow('').label('Second Question Answer - Icon'),
     label: Joi.string().max(50).allow('').label('Second Question Answer - Label'),
-    value: Joi.string().max(50).allow('').label('Second Question Answer - Value'),
+    value: Joi.any().allow('').label('Second Question Answer - Value'),
   }).label('Second Question Answer'),
 });
 
