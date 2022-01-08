@@ -21,15 +21,6 @@ const moment = MomentRange.extendMoment(Moment);
 /* * */
 /* * */
 /* * * * * */
-/* GET method for [/terminal/temporalscales] */
-/* Responds with all distinct store locations present in the database. */
-router.get('/timescales', async (req, res) => {
-  res.send(['Hour', 'Day', 'Week', 'Month']);
-});
-
-/* * */
-/* * */
-/* * * * * */
 /* POST method for [/POSF] */
 /* Validates the request. */
 /* Stores the image in storage. */
