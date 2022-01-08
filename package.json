@@ -1,7 +1,7 @@
 {
   "name": "chefpoint-feedback-api",
-  "version": "1.0.0",
-  "description": "CHEF POINT Feedback, built on Node.js, Express and MongoDB",
+  "version": "2.0.0",
+  "description": "CHEF POINT Feedback API, built on Node.js, Express and Google Sheets",
   "main": "index.js",
   "scripts": {
     "test": "jest --watch-all --verbose",
@@ -12,14 +12,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/joao-vasconcelos/orpheu-api.git"
+    "url": "git+https://github.com/ChefPoint/feedback-api.git"
   },
   "author": "João de Vasconcelos",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
-    "url": "https://github.com/joao-vasconcelos/orpheu-api/issues"
+    "url": "https://github.com/ChefPoint/feedback-api/issues"
   },
-  "homepage": "https://github.com/joao-vasconcelos/orpheu-api#readme",
+  "homepage": "https://github.com/ChefPoint/feedback-api#readme",
   "dependencies": {
     "compression": "^1.7.4",
     "config": "^3.3.6",
@@ -30,11 +30,11 @@
     "helmet": "^5.0.1",
     "joi": "^17.5.0",
     "moment": "^2.29.1",
-    "nodemon": "^2.0.15",
     "npm": "^8.3.0",
     "winston": "^3.3.3"
   },
   "devDependencies": {
+    "nodemon": "^2.0.15",
     "jest": "^27.4.7"
   }
 }

@@ -11,7 +11,6 @@ const connectToDocument = async () => {
   console.log('Waiting for Google Sheets...');
   await new Promise((resolve) => setTimeout(resolve, config.get('google-spreadsheets.safety-delay')));
   // -------------------
-  // return;
   // Retrieve the Document ID from settings
   const doc = new GoogleSpreadsheet(config.get('google-spreadsheets.document-id'));
   await doc.useServiceAccountAuth({
