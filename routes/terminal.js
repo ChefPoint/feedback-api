@@ -3,13 +3,6 @@
 const router = require('express').Router();
 const { POSFeedback, validate } = require('../models/POSFeedback');
 
-const Moment = require('moment');
-const MomentRange = require('moment-range');
-
-const _ = require('lodash');
-
-const moment = MomentRange.extendMoment(Moment);
-
 /* * */
 /* * */
 /* * */
