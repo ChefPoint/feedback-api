@@ -52,63 +52,6 @@ router.get('/timescales', async (req, res) => {
 /* * */
 /* * */
 /* * * * * */
-/* GET method for [/POSF/score] */
-/* Updates an existing item in the database. */
-/* Responds with the updated item */
-router.get('/score/:timescale', async (req, res) => {
-  // 1 - Timeframe
-  // Query the database and get items matching the requested timeframe
-  const itemsInRequestedTimeframe = await POSFeedback.find({
-    timestamp: {
-      $gte: new Date(req.query.startDate),
-      $lt: new Date(req.query.endDate),
-    },
-  });
-
-  // 2 - Location
-  // Filter given items that match the requested store location
-  const itemsFromRequestedLocation = itemsInRequestedTimeframe.filter((item) => {
-    return item.location === req.query.location;
-  });
-
-  // 3 - Score
-  // Filter given items that match the requested score value
-  const itemsWithRequestedScore = itemsFromRequestedLocation.filter((item) => {
-    return item.score === req.query.score;
-  });
-
-  // 4 - How many items in each timescale
-  // From previously filtered items,
-  // count how many are from each day in the given timeframe
-
-  // Initialize final array
-  const data = [];
-
-  // Get a timeframe
-  const timeframe = moment.range(moment(req.query.startDate), moment(req.query.endDate));
-
-  // Set timescale (day, hour, minute). Default to day.
-  const timescale = req.param.timescale || 'day';
-
-  // Count how many items match .timestamp for each day
-  for (let timeunit of timeframe.by(timescale)) {
-    const itemsFromThisTimeUnit = itemsWithRequestedScore.filter((item) => {
-      if (moment(item.timestamp).isBetween(timeunit, moment(timeunit).add(1, timescale))) return item;
-    });
-
-    data.push({
-      x: timeunit.toISOString(),
-      y: itemsFromThisTimeUnit.length,
-    });
-  }
-
-  // Send final data array
-  res.send(data);
-});
-
-/* * */
-/* * */
-/* * * * * */
 /* POST method for [/POSF] */
 /* Validates the request. */
 /* Stores the image in storage. */
