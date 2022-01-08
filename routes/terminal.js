@@ -46,9 +46,9 @@ router.post('/', async (req, res) => {
     // The first question title
     firstQuestionTitle: req.body.firstQuestionTitle,
     // The first question answer
-    firstQuestionAnswerIcon: req.body.firstQuestionAnswer.icon,
-    firstQuestionAnswerLabel: req.body.firstQuestionAnswer.label,
-    firstQuestionAnswerValue: req.body.firstQuestionAnswer.value,
+    firstQuestionAnswerIcon: req.body.firstQuestionAnswerIcon,
+    firstQuestionAnswerLabel: req.body.firstQuestionAnswerLabel,
+    firstQuestionAnswerValue: req.body.firstQuestionAnswerValue,
   };
 
   // Save feedback to GSheets
@@ -67,6 +67,7 @@ router.post('/', async (req, res) => {
 router.put('/', async (req, res) => {
   // Validate the request
   const { error } = validate(req.body);
+  console.log('error', error);
   if (error) return res.status(400).send(error.details[0].message);
 
   const rows = await spreadsheetAPI.getRows(req.body.session);
@@ -74,9 +75,9 @@ router.put('/', async (req, res) => {
   for (const row of rows) {
     if (row.id == req.body.id) {
       row.secondQuestionTitle = req.body.secondQuestionTitle;
-      row.secondQuestionAnswerIcon = req.body.secondQuestionAnswer.icon;
-      row.secondQuestionAnswerLabel = req.body.secondQuestionAnswer.label;
-      row.secondQuestionAnswerValue = req.body.secondQuestionAnswer.value;
+      row.secondQuestionAnswerIcon = req.body.secondQuestionAnswerIcon;
+      row.secondQuestionAnswerLabel = req.body.secondQuestionAnswerLabel;
+      row.secondQuestionAnswerValue = req.body.secondQuestionAnswerValue;
       row.save();
     }
   }

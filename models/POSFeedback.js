@@ -100,19 +100,15 @@ const validation_schema = Joi.object({
 
   // First Question
   firstQuestionTitle: Joi.string().max(30).label('First Question Title'),
-  firstQuestionAnswer: Joi.object({
-    icon: Joi.string().max(50).allow('').label('First Question Answer - Icon'),
-    label: Joi.string().max(50).allow('').label('First Question Answer - Label'),
-    value: Joi.any().required().label('First Question Answer - Value'),
-  }).label('First Question Answer'),
+  firstQuestionAnswerIcon: Joi.string().max(50).allow('').label('First Question Answer - Icon'),
+  firstQuestionAnswerLabel: Joi.string().max(50).allow('').label('First Question Answer - Label'),
+  firstQuestionAnswerValue: Joi.any().label('First Question Answer - Value'),
 
   // Second Question
   secondQuestionTitle: Joi.string().max(30).label('Second Question Title'),
-  secondQuestionAnswer: Joi.object({
-    icon: Joi.string().max(50).allow('').label('Second Question Answer - Icon'),
-    label: Joi.string().max(50).allow('').label('Second Question Answer - Label'),
-    value: Joi.any().allow('').label('Second Question Answer - Value'),
-  }).label('Second Question Answer'),
+  secondQuestionAnswerIcon: Joi.string().max(50).allow('').label('Second Question Answer - Icon'),
+  secondQuestionAnswerLabel: Joi.string().max(50).allow('').label('Second Question Answer - Label'),
+  secondQuestionAnswerValue: Joi.any().label('Second Question Answer - Value'),
 });
 
 function validate(request) {
