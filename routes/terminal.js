@@ -21,17 +21,6 @@ const moment = MomentRange.extendMoment(Moment);
 /* * */
 /* * */
 /* * * * * */
-/* GET method for [/terminal/locations] */
-/* Responds with all distinct store locations present in the database. */
-router.get('/sessions', async (req, res) => {
-  await POSFeedback.distinct('session', (err, obj) => {
-    res.send(obj);
-  });
-});
-
-/* * */
-/* * */
-/* * * * * */
 /* GET method for [/terminal/sessions] */
 /* Responds with all distinct store locations present in the database. */
 router.get('/locations', async (req, res) => {
