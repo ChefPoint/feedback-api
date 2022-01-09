@@ -3,9 +3,9 @@
 /* * */
 /* IMPORTS */
 const router = require('express').Router();
+const moment = require('moment');
 const { validate } = require('../models/POSFeedback');
 const spreadsheetAPI = require('../services/spreadsheetAPI');
-const moment = require('moment');
 
 /* * */
 /* * */
@@ -14,6 +14,38 @@ const moment = require('moment');
 /* ROUTES FOR 'FEEDBACK TERMINAL' */
 /* * */
 /* * */
+
+router.get('/options', async (req, res) => {
+  const rows = await spreadsheetAPI.getRows('Options', 2);
+
+  const options = {};
+
+  options.firstQuestionTitle = rows[0].firstQuestionTitle;
+  options.firstQuestionOptions = [];
+  for (const row of rows) {
+    if (row.firstQuestionAnswerIcon || row.firstQuestionAnswerLabel || row.firstQuestionAnswerValue) {
+      options.firstQuestionOptions.push({
+        icon: row.firstQuestionAnswerIcon,
+        label: row.firstQuestionAnswerLabel,
+        value: row.firstQuestionAnswerValue,
+      });
+    }
+  }
+
+  options.secondQuestionTitle = rows[0].secondQuestionTitle;
+  options.secondQuestionOptions = [];
+  for (const row of rows) {
+    if (row.secondQuestionAnswerIcon || row.secondQuestionAnswerLabel || row.secondQuestionAnswerValue) {
+      options.secondQuestionOptions.push({
+        icon: row.secondQuestionAnswerIcon,
+        label: row.secondQuestionAnswerLabel,
+        value: row.secondQuestionAnswerValue,
+      });
+    }
+  }
+
+  res.send(options);
+});
 
 /* * */
 /* * */
@@ -34,8 +66,6 @@ router.post('/', async (req, res) => {
   let feedback = {
     // Unique identifier for later reference
     id: Date.now().toString(),
-    // The session of the feedback
-    session: req.body.session,
     // The location where feedback was submitted
     location: req.body.location,
     // Timestamp
@@ -50,7 +80,7 @@ router.post('/', async (req, res) => {
   };
 
   // Save feedback to GSheets
-  await spreadsheetAPI.addNewRow(feedback.session, feedback);
+  await spreadsheetAPI.addNewRow('Responses', feedback);
 
   // Send the created feedback back to the client
   res.send(feedback);
@@ -65,10 +95,9 @@ router.post('/', async (req, res) => {
 router.put('/', async (req, res) => {
   // Validate the request
   const { error } = validate(req.body);
-  console.log('error', error);
   if (error) return res.status(400).send(error.details[0].message);
 
-  const rows = await spreadsheetAPI.getRows(req.body.session);
+  const rows = await spreadsheetAPI.getRows('Responses', 5, true);
 
   for (const row of rows) {
     if (row.id == req.body.id) {
