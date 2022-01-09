@@ -1,6 +1,10 @@
-const winston = require("winston");
+'use strict';
 
-module.exports = function(err, req, res, next) {
-  winston.error(err.message, err);
-  res.status(500).send("Something failed.");
+/* * * * * */
+/* ERROR HANDLING */
+/* * */
+
+module.exports = function (err, req, res, next) {
+  console.log(err.message, err);
+  res.status(500).send('Something failed.');
 };
