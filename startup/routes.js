@@ -1,14 +1,16 @@
-'use_strict';
+'use strict';
 
-/* * */
-/* * */
 /* * * * * */
-/* API ROUTES */
+/* ROUTES */
 /* * */
 
+/* * */
+/* IMPORTS */
 const terminal_router = require('../routes/terminal');
 const error = require('../middleware/error');
 
+/* * */
+/* Export functions */
 module.exports = function (app) {
   app.use('/', terminal_router);
   app.use(error);
