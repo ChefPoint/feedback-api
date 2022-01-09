@@ -1,11 +1,11 @@
-'use_strict';
+'use strict';
 
-/* * */
-/* * */
 /* * * * * */
-/* COMMUNICATION MODULES */
+/* NETWORK */
 /* * */
 
+/* * */
+/* IMPORTS */
 const cors = require('cors');
 const express = require('express');
 

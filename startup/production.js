@@ -1,11 +1,11 @@
-'use_strict';
+'use strict';
 
-/* * */
-/* * */
 /* * * * * */
-/* PRODUCTION MODULES */
+/* PRODUCTION */
 /* * */
 
+/* * */
+/* IMPORTS */
 const helmet = require('helmet');
 const compression = require('compression');
 
