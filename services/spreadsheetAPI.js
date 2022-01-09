@@ -8,9 +8,6 @@ const config = require('config');
 const { GoogleSpreadsheet } = require('google-spreadsheet');
 
 const connectToDocument = async () => {
-  console.log('Waiting for Google Sheets...');
-  await new Promise((resolve) => setTimeout(resolve, config.get('google-spreadsheets.safety-delay')));
-  // -------------------
   // Retrieve the Document ID from settings
   const doc = new GoogleSpreadsheet(config.get('google-spreadsheets.document-id'));
   await doc.useServiceAccountAuth({
@@ -27,9 +24,9 @@ exports.addNewRow = async (sheetTitle, row) => {
   await sheet.addRow(row);
 };
 
-exports.getRows = async (sheetTitle) => {
+exports.getRows = async (sheetTitle, offset = 0, startFromEnd = false) => {
   const doc = await connectToDocument();
   const sheet = doc.sheetsByTitle[sheetTitle];
-  const rows = await sheet.getRows();
+  const rows = await sheet.getRows({ offset: startFromEnd ? sheet.rowCount - offset : offset });
   return rows;
 };
