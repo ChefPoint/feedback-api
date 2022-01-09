@@ -1,13 +1,10 @@
-const config = require("config");
+const config = require('config');
 
-module.exports = function(req, res, next) {
-  if (config.get("connection.allow-cross-domain")) {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "*");
-    res.header(
-      "Access-Control-Allow-Methods",
-      "GET, POST, PUT, DELETE, OPTIONS"
-    ); // Content-Type, Origin, X-Requested-With, Accept
+module.exports = function (req, res, next) {
+  if (config.get('connection.allow-cross-domain')) {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Headers', '*');
+    res.header('Access-Control-Allow-Methods', 'POST, PUT'); // Content-Type, Origin, X-Requested-With, Accept
   }
   next();
 };
