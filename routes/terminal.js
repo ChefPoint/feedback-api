@@ -146,7 +146,7 @@ router.put('/:id', async (req, res) => {
   /* * Send 200
    * Finally inform the client that the Feedback was received and saved.
    */
-  res.status(200);
+  res.status(200).send();
 });
 
 /* * */
