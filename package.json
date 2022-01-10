@@ -4,6 +4,7 @@
   "description": "CHEF POINT Feedback API, built on Node.js, Express and Google Sheets",
   "main": "index.js",
   "scripts": {
+    "development": "nodemon",
     "test": "jest --watch-all --verbose",
     "start": "node index.js"
   },
