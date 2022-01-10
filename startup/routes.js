@@ -7,7 +7,7 @@
 /* * */
 /* IMPORTS */
 const terminal_router = require('../routes/terminal');
-const error = require('../middleware/error');
+const error = require('./error');
 
 /* * */
 /* Export functions */
