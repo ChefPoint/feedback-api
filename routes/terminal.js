@@ -143,10 +143,10 @@ router.put('/:id', async (req, res) => {
     }
   }
 
-  /* * Send the Response
-   * Finally send the formatted Feedback to the client.
+  /* * Send 200
+   * Finally inform the client that the Feedback was received and saved.
    */
-  res.send(req.body);
+  res.status(200);
 });
 
 /* * */
