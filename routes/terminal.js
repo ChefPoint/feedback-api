@@ -46,6 +46,7 @@ router.get('/options', async (req, res) => {
         value: row.firstQuestionAnswerValue,
         // Additional flag to check whether there are follow up questions or not
         followup: row.firstQuestionShouldFollowUp,
+        animation: row.firstQuestionAnimation,
       });
     }
   }
