@@ -44,9 +44,11 @@ router.get('/options', async (req, res) => {
         icon: row.firstQuestionAnswerIcon,
         label: row.firstQuestionAnswerLabel,
         value: row.firstQuestionAnswerValue,
-        // Additional flag to check whether there are follow up questions or not
+        // Additional properties
         followup: row.firstQuestionShouldFollowUp,
         animation: row.firstQuestionAnimation,
+        thankYouTitle: row.firstQuestionThankYouTitle,
+        thankYouText: row.firstQuestionThankYouText,
       });
     }
   }
