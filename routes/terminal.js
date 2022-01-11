@@ -10,6 +10,7 @@ const router = require('express').Router();
 const moment = require('moment');
 const Feedback = require('../models/Feedback');
 const spreadsheetAPI = require('../services/spreadsheetAPI');
+const filesystemAPI = require('../services/filesystemAPI');
 
 /* * */
 /* GET OPTIONS */
@@ -46,7 +47,7 @@ router.get('/options', async (req, res) => {
         value: row.firstQuestionAnswerValue,
         // Additional properties
         shouldFollowUp: row.firstQuestionShouldFollowUp,
-        animation: row.firstQuestionAnimation,
+        animation: filesystemAPI.getAnimation(row.firstQuestionAnimationKey),
         thankYouTitle: row.firstQuestionThankYouTitle,
         thankYouText: row.firstQuestionThankYouText,
       });
