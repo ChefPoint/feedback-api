@@ -46,7 +46,7 @@ router.get('/options', async (req, res) => {
         label: row.firstQuestionAnswerLabel,
         value: row.firstQuestionAnswerValue,
         // Additional properties
-        shouldFollowUp: row.firstQuestionShouldFollowUp,
+        shouldFollowUp: row.firstQuestionShouldFollowUp == 'TRUE' ? true : false,
         animation: filesystemAPI.getAnimation(row.firstQuestionAnimationKey),
         thankYouTitle: row.firstQuestionThankYouTitle,
         thankYouText: row.firstQuestionThankYouText,
