@@ -24,7 +24,7 @@ const connectToDocument = async () => {
    * If document is falsy, then authenticate against Google.
    * If there is already a connection there is no point in re-authenticating.
    */
-  if (document) return;
+  if (document) return document.loadInfo();
 
   /* * Create new document
    * If no connection is made, retrieve the document ID from settings

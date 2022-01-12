@@ -2,24 +2,25 @@
   "name": "chefpoint-feedback-api",
   "version": "2.0.0",
   "description": "CHEF POINT Feedback API, built on Node.js, Express and Google Sheets",
+  "author": "João de Vasconcelos",
+  "license": "MIT",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ChefPoint/feedback-api.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ChefPoint/feedback-api/issues"
+  },
   "main": "index.js",
   "scripts": {
+    "development": "nodemon",
     "test": "jest --watch-all --verbose",
     "start": "node index.js"
   },
   "engines": {
-    "node": "16.13.1"
+    "node": "16.13.2"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/ChefPoint/feedback-api.git"
-  },
-  "author": "João de Vasconcelos",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/ChefPoint/feedback-api/issues"
-  },
-  "homepage": "https://github.com/ChefPoint/feedback-api#readme",
   "dependencies": {
     "compression": "^1.7.4",
     "config": "^3.3.6",

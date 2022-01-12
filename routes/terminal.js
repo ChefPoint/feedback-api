@@ -10,6 +10,7 @@ const router = require('express').Router();
 const moment = require('moment');
 const Feedback = require('../models/Feedback');
 const spreadsheetAPI = require('../services/spreadsheetAPI');
+const filesystemAPI = require('../services/filesystemAPI');
 
 /* * */
 /* GET OPTIONS */
@@ -44,6 +45,11 @@ router.get('/options', async (req, res) => {
         icon: row.firstQuestionAnswerIcon,
         label: row.firstQuestionAnswerLabel,
         value: row.firstQuestionAnswerValue,
+        // Additional properties
+        shouldFollowUp: row.firstQuestionShouldFollowUp == 'TRUE' ? true : false,
+        animation: filesystemAPI.getAnimation(row.firstQuestionAnimationKey),
+        thankYouTitle: row.firstQuestionThankYouTitle,
+        thankYouText: row.firstQuestionThankYouText,
       });
     }
   }
